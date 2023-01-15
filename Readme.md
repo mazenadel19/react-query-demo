@@ -13,6 +13,8 @@ npm start
 
 ## Tools
 
+- Axios
 - React Query
-- Tailwind
 - React Router
+- Tailwind
+- TypeScript
