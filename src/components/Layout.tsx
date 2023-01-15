@@ -1,22 +1,12 @@
-import { Outlet, Link } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
+import MainNav from './MainNav';
 
 export default function Layout() {
   return (
-    <div>
-      <nav>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/react-query">react-query</Link>
-          </li>
-        </ul>
-      </nav>
-
+    <>
+      <MainNav />
       <hr />
-
       <Outlet />
-    </div>
+    </>
   );
 }

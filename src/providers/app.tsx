@@ -1,5 +1,4 @@
 import React from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
 import { queryClient } from '@/lib/react-query';
@@ -12,12 +11,14 @@ type AppProviderProps = {
 export const AppProvider = ({ children }: AppProviderProps) => {
   return (
     <React.Suspense
-      fallback={<div className="flex items-center justify-center w-screen h-screen">loading...</div>}
+      fallback={
+        <div className="flex items-center justify-center w-screen h-screen">loading...</div>
+      }
     >
-          <QueryClientProvider client={queryClient}>
-            {process.env.NODE_ENV !== 'test' && <ReactQueryDevtools />}
-            <Router>{children}</Router>
-          </QueryClientProvider>
+      <QueryClientProvider client={queryClient}>
+        {process.env.NODE_ENV !== 'test' && <ReactQueryDevtools />}
+        {children}
+      </QueryClientProvider>
     </React.Suspense>
   );
 };
