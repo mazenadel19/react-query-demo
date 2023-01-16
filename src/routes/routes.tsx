@@ -1,20 +1,26 @@
+import { lazy } from 'react';
 import type { RouteObject } from 'react-router-dom';
 
 import Home from '@/components/Home';
 import Layout from '@/components/Layout';
-import NoMatch from '@/components/NoMatch';
-import Normal from '@/components/ReactQuery/Normal';
-import Infinite from '@/components/ReactQuery/Infinite';
-import Paginated from '@/components/ReactQuery/Paginated';
-import ReactQuery from '@/components/ReactQuery/Index';
-import Details from '@/components/ReactQuery/Details';
-import User from '@/components/ReactQuery/User';
 // import { getPost } from '@/services/PostServices';
+
+const ReactQuery = lazy(() => import('@/components/ReactQuery/Index'));
+const Normal = lazy(() => import('@/components/ReactQuery/Normal'));
+const Infinite = lazy(() => import('@/components/ReactQuery/Infinite'));
+const Paginated = lazy(() => import('@/components/ReactQuery/Paginated'));
+const Details = lazy(() => import('@/components/ReactQuery/Details'));
+const User = lazy(() => import('@/components/ReactQuery/User'));
+const Create = lazy(() => import('@/components/ReactQuery/Create'));
+
+const NoMatch = lazy(() => import('@/components/NoMatch'));
+const Error = lazy(() => import('@/components/Error'));
 
 export const routes: RouteObject[] = [
   {
     path: '/',
     element: <Layout />,
+    errorElement : <Error />,
     children: [
       { index: true, element: <Home /> },
       {
@@ -43,6 +49,10 @@ export const routes: RouteObject[] = [
           {
             path: 'user/:userId',
             element: <User />,
+          },
+          {
+            path: 'create',
+            element: <Create />,
           },
         ],
       },

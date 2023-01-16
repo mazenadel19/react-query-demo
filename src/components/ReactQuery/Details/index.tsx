@@ -31,7 +31,7 @@ const Details = () => {
 
   return (
     <>
-      <Link to="/">Home</Link>
+    <Link to="/" className="underline text-blue-600 hover:text-blue-800 visited:text-purple-600">Home</Link>
       <h1 className="text-4xl">{postData?.title}</h1>
       <h2 className="text-2xl underline text-blue-600 hover:text-blue-800 visited:text-purple-600">
         <Link to={`/react-query/user/${userData?.id}`}>{userData.name}</Link>

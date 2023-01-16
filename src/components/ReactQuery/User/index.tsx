@@ -3,8 +3,7 @@ import { getUser } from '@/services/UserServices';
 import { useQuery } from '@tanstack/react-query';
 
 const User = () => {
-    const { userId } = useParams();
-    console.log('here')
+  const { userId } = useParams();
   const {
     status: userStatus,
     data: userData,
@@ -19,12 +18,12 @@ const User = () => {
 
   return (
     <>
-      <Link to="/">Home</Link>
-      <h1 className="text-4xl">{userData.name}</h1>
-      <h2 className="text-2xl underline text-blue-600 hover:text-blue-800 visited:text-purple-600">
+      <Link to='/' className='underline text-blue-600 hover:text-blue-800 visited:text-purple-600'>Home</Link>
+      <h1 className='text-4xl'>{userData.name}</h1>
+      <h2 className='text-2xl underline text-blue-600 hover:text-blue-800 visited:text-purple-600'>
         {userData.email}
       </h2>
-      <h3 className="text-xl">{userData.phone}</h3>
+      <h3 className='text-xl'>{userData.phone}</h3>
     </>
   );
 };
