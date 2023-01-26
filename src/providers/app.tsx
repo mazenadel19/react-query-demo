@@ -9,6 +9,7 @@ type AppProviderProps = {
 };
 
 export const AppProvider = ({ children }: AppProviderProps) => {
+
   return (
     <React.Suspense
       fallback={
@@ -16,7 +17,7 @@ export const AppProvider = ({ children }: AppProviderProps) => {
       }
     >
       <QueryClientProvider client={queryClient}>
-        {process.env.NODE_ENV !== 'production' && <ReactQueryDevtools />}
+        {import.meta.env.DEV && <ReactQueryDevtools />}
         {children}
       </QueryClientProvider>
     </React.Suspense>
