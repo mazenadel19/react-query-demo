@@ -7,12 +7,12 @@ const Create = () => {
   const navigate = useNavigate()
   const titleText = useRef<HTMLInputElement>(null)
   const bodyText = useRef<HTMLInputElement>(null)
+  const userIdText = useRef<HTMLInputElement>(null)
 
   const queryClient = useQueryClient()
   const { status, error, mutate } = useMutation({
     mutationFn: createPost,
     onSuccess: (newPost) => {
-      console.log({newPost})
       queryClient.setQueriesData(['PostDetails', newPost!.id], newPost)
       navigate(`/react-query/${newPost?.id}`)
     }
@@ -23,7 +23,8 @@ const Create = () => {
     e.preventDefault()
     mutate({
       title: titleText.current!.value,
-      body: bodyText.current!.value
+      body: bodyText.current!.value,
+      userId: +userIdText.current!.value
     })
   }
 
@@ -49,7 +50,11 @@ const Create = () => {
           <label htmlFor='body' className='block mb-2 text-sm font-medium text-gray-900'>body</label>
           <input id='body' type='text' required ref={bodyText}
             className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500' />
-
+        </div>
+        <div>
+          <label htmlFor='userId' className='block mb-2 text-sm font-medium text-gray-900'>userId</label>
+          <input id='userId' type='number' min={1} max={10} required ref={userIdText} 
+            className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500' />
         </div>
       </div>
       <button type='submit'

@@ -21,9 +21,9 @@ const getPost = async (id: string) => {
   } else return null;
 };
 
-const createPost = async ({ title, body }: { title: string; body: string }) => {
-  if (title && body) {
-    const res = await API.post<Post>(`${URL}`, { title, body });
+const createPost = async ({ title, body, userId }: Omit<Post,'id'>) => {
+  if (title && body && userId) {
+    const res = await API.post<Post>(`${URL}`, { title, body, userId });
     return res.data;
   } else return null;
 };

@@ -12,7 +12,7 @@ const Details = () => {
     data: postData,
     error: postError,
   } = useQuery({ queryKey: ['PostDetails'], queryFn: () => getPost(id!) });
-
+  console.log('postData', postError)
   const {
     status: userStatus,
     data: userData,

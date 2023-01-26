@@ -7,6 +7,11 @@ This demo project goes along with Web Dev Simplified YT Video [React Query Makes
 ## Setup
 
 ```
+npm install -g json-server
+json-server --watch db.json
+```
+
+```
 npm install
 npm start
 ```
@@ -14,6 +19,7 @@ npm start
 ## Tools
 
 - Axios
+- Json-Server
 - React Query
 - React Router
 - Tailwind
