@@ -21,9 +21,9 @@ const getPost = async (id: string) => {
   } else return null;
 };
 
-const addPost = async ({ title, body }: { title: string; body: string }) => {
+const createPost = async ({ title, body }: { title: string; body: string }) => {
   if (title && body) {
-    const res = await API.get<Post>(`${URL}`);
+    const res = await API.post<Post>(`${URL}`, { title, body });
     return res.data;
   } else return null;
 };
@@ -40,4 +40,4 @@ const getInfiniteScrollPosts = async () => {
   return res.data;
 };
 
-export { getPosts, getPost, getPaginatedPosts, getInfiniteScrollPosts };
+export { getPosts, getPost, getPaginatedPosts, getInfiniteScrollPosts, createPost };
