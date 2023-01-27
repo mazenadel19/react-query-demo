@@ -13,7 +13,7 @@ export const AppProvider = ({ children }: AppProviderProps) => {
   return (
     <React.Suspense fallback={<div className="flex items-center justify-center w-screen h-screen">loading...</div>}>
       <QueryClientProvider client={queryClient}>
-        {import.meta.env.MODE === 'development' && <ReactQueryDevtools />}
+        {import.meta.env.MODE === 'development' && <ReactQueryDevtools position='top-right' />}
         {children}
       </QueryClientProvider>
     </React.Suspense>

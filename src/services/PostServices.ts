@@ -14,6 +14,11 @@ const getPosts = async () => {
   return response.data;
 };
 
+const getPaginatedPosts = async (_page = 1, _limit = 10) => {
+  const response = await API.get<Post[]>(URL, { params: { _page, _limit } });
+  return response.data;
+};
+
 const getPost = async (id: string) => {
   if (id) {
     const res = await API.get<Post>(`${URL}/${id}`);
@@ -26,18 +31,6 @@ const createPost = async ({ title, body, userId }: Omit<Post, 'id'>) => {
     const res = await API.post<Post>(`${URL}`, { title, body, userId });
     return res.data;
   } else return null;
-};
-
-// axios get paginated Posts
-const getPaginatedPosts = async () => {
-  const res = await API.get<Post[]>(URL + '?_page=1&amp;_limit=10');
-  return res.data;
-};
-
-// axios infinite scrolling Posts
-const getInfiniteScrollPosts = async () => {
-  const res = await API.get<Post[]>(URL + '?_page=1&amp;_limit=10');
-  return res.data;
 };
 
 export { getPosts, getPost, getPaginatedPosts, getInfiniteScrollPosts, createPost };
