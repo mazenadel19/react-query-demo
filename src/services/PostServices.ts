@@ -16,7 +16,11 @@ const getPosts = async () => {
 
 const getPaginatedPosts = async (_page = 1, _limit = 10) => {
   const response = await API.get<Post[]>(URL, { params: { _page, _limit } });
-  return response.data;
+  return {
+    posts: response.data,
+    nextPage: response.data.length === _limit ? _page + 1 : null,
+    previousPage: _page > 1 ? _page - 1 : null
+  }
 };
 
 const getPost = async (id: string) => {
