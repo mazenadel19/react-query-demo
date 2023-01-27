@@ -1,8 +1,7 @@
 import { isRouteErrorResponse, useRouteError } from 'react-router-dom';
 
 const Error = () => {
-  let error = useRouteError();
-  console.log(error);
+  let error = useRouteError() as Error;
 
   if (isRouteErrorResponse(error)) {
     if (error.status === 404) {
@@ -22,7 +21,12 @@ const Error = () => {
     }
   }
 
-  return <div>Dang!</div>;
+  return <div>
+    <h1 className='text-center'>Oops!</h1>
+    {import.meta.env.MODE === "development" && <pre className='whitespace-pre-wrap'>
+      {JSON.stringify(error, null, 4).replace(/\\n/g, '\n')}
+    </pre>}
+  </div>;
 };
 
 export default Error;
