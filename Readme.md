@@ -13,7 +13,7 @@ json-server --watch db.json
 
 ```
 npm install
-npm start
+npm run dev
 ```
 
 ## Tools
