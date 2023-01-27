@@ -1,6 +1,6 @@
 import API from './API';
 
-interface Post {
+export interface Post {
   id: number;
   userId: number;
   title: string;
@@ -33,4 +33,4 @@ const createPost = async ({ title, body, userId }: Omit<Post, 'id'>) => {
   } else return null;
 };
 
-export { getPosts, getPost, getPaginatedPosts, getInfiniteScrollPosts, createPost };
+export { getPosts, getPost, getPaginatedPosts, createPost };
